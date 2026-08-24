@@ -68,12 +68,25 @@
         "button_label": "Discover our story",
         "button_link": "/pages/about"
       }
+    },
+    "contact": {
+      "type": "contact-showcase",
+      "settings": {
+        "eyebrow": "GET IN TOUCH",
+        "heading": "We would love to hear from you.",
+        "text": "<p>Questions about a product, an existing order, or a future collaboration? Send us a note and our team will help.</p>",
+        "email": "hello@auroracommerce.com",
+        "response_time": "Within 1–2 business days",
+        "location": "Tegal, Indonesia",
+        "note": "Thoughtful support from real people, from first question to aftercare."
+      }
     }
   },
   "order": [
     "hero",
     "values",
     "featured",
-    "story"
+    "story",
+    "contact"
   ]
 }
