@@ -1,4 +1,5 @@
 https://rg-developer-ao2mnyup.myshopify.com/
+password : saypiy
 
 # Aurora Commerce — Advanced Shopify Portfolio Theme
 
