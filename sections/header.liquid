@@ -7,7 +7,8 @@
 
   <nav class="desktop-nav" aria-label="Primary">
     {% for link in section.settings.menu.links %}
-      {% if link.title | downcase == 'contact' %}
+      {% assign normalized_link_title = link.title | downcase %}
+      {% if normalized_link_title == 'contact' %}
         <a href="{{ routes.root_url }}#contact">{{ link.title }}</a>
       {% else %}
         <a href="{{ link.url }}">{{ link.title }}</a>
@@ -23,7 +24,8 @@
 
 <nav id="MobileMenu" class="mobile-menu page-width" hidden>
   {% for link in section.settings.menu.links %}
-    {% if link.title | downcase == 'contact' %}
+    {% assign normalized_link_title = link.title | downcase %}
+    {% if normalized_link_title == 'contact' %}
       <a href="{{ routes.root_url }}#contact">{{ link.title }}</a>
     {% else %}
       <a href="{{ link.url }}">{{ link.title }}</a>
