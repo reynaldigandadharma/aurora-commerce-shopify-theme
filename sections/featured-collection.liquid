@@ -18,7 +18,13 @@
       {% for i in (1..4) %}
         <article class="product-card placeholder-card">
           <div class="product-media">
-            {{ 'aurora-product-placeholder.png' | asset_url | image_tag: loading: 'lazy', alt: 'Aurora leather tote' }}
+            <img
+              src="{{ 'aurora-product-placeholder.png' | asset_url }}"
+              alt="Aurora leather tote"
+              width="1128"
+              height="1408"
+              loading="lazy"
+            >
             {% if i == 1 %}<span class="badge">Bestseller</span>{% endif %}
           </div>
           <div class="product-meta"><strong>Aurora Carryall {{ i }}</strong><span>Rp 1.299.000</span></div>

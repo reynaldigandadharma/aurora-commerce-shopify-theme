@@ -9,7 +9,13 @@
           alt: section.settings.image.alt
         }}
       {% else %}
-        {{ 'aurora-craftsmanship.png' | asset_url | image_tag: loading: 'lazy', alt: 'Aurora artisan craftsmanship' }}
+        <img
+          src="{{ 'aurora-craftsmanship.png' | asset_url }}"
+          alt="Aurora artisan craftsmanship"
+          width="1536"
+          height="1024"
+          loading="lazy"
+        >
       {% endif %}
     </div>
     <div class="story-copy">

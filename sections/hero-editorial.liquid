@@ -26,12 +26,14 @@
           alt: section.settings.image.alt
         }}
       {% else %}
-        {{ 'aurora-hero.png' | asset_url | image_tag:
-          loading: 'eager',
-          widths: '480, 720, 960, 1200, 1600',
-          sizes: '(min-width: 900px) 50vw, 100vw',
-          alt: 'Aurora Commerce new season editorial'
-        }}
+        <img
+          src="{{ 'aurora-hero.png' | asset_url }}"
+          alt="Aurora Commerce new season editorial"
+          width="1536"
+          height="1024"
+          loading="eager"
+          fetchpriority="high"
+        >
       {% endif %}
       <span class="hero-media-label">Designed for everyday rituals</span>
     </div>
