@@ -1,0 +1,21 @@
+<article class="product-card">
+  <a href="{{ product.url }}">
+    <div class="product-media">
+      {% if product.featured_image %}
+        {{ product.featured_image | image_url: width: 800 | image_tag:
+          loading: 'lazy',
+          widths: '320, 480, 640, 800',
+          sizes: '(min-width: 900px) 25vw, 50vw',
+          alt: product.featured_image.alt
+        }}
+      {% endif %}
+      {% if product.compare_at_price > product.price %}
+        <span class="badge">Sale</span>
+      {% endif %}
+    </div>
+    <div class="product-meta">
+      <strong>{{ product.title }}</strong>
+      <span>{{ product.price | money }}</span>
+    </div>
+  </a>
+</article>

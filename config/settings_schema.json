@@ -1,0 +1,33 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Aurora Commerce",
+    "theme_version": "1.0.0",
+    "theme_author": "Portfolio Project",
+    "theme_documentation_url": "https://shopify.dev/docs/storefronts/themes",
+    "theme_support_url": "https://shopify.dev/docs"
+  },
+  {
+    "name": "Theme settings",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background",
+        "default": "#f7f6f2"
+      },
+      {
+        "type": "color",
+        "id": "text",
+        "label": "Text",
+        "default": "#191919"
+      },
+      {
+        "type": "color",
+        "id": "accent",
+        "label": "Accent",
+        "default": "#191919"
+      }
+    ]
+  }
+]

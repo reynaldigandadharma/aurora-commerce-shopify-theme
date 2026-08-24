@@ -1,0 +1,33 @@
+<header class="header page-width">
+  <a class="brand" href="{{ routes.root_url }}">{{ shop.name | default: 'Aurora Commerce' }}</a>
+
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="MobileMenu">
+    Menu
+  </button>
+
+  <nav class="desktop-nav" aria-label="Primary">
+    {% for link in section.settings.menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a>
+    {% endfor %}
+  </nav>
+
+  <div class="header-actions">
+    <a href="{{ routes.search_url }}">Search</a>
+    <a href="{{ routes.cart_url }}">Cart <span data-cart-count>{{ cart.item_count }}</span></a>
+  </div>
+</header>
+
+<nav id="MobileMenu" class="mobile-menu page-width" hidden>
+  {% for link in section.settings.menu.links %}
+    <a href="{{ link.url }}">{{ link.title }}</a>
+  {% endfor %}
+</nav>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {"type":"link_list","id":"menu","label":"Menu","default":"main-menu"}
+  ]
+}
+{% endschema %}

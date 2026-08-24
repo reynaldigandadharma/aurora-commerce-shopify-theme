@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "shipping": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Shipping & returns",
+            "content": "<p>Merchant-editable product information.</p>"
+          }
+        },
+        "care": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Product details",
+            "content": "<p>Use blocks to manage product information without editing code.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "shipping",
+        "care"
+      ],
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Recommended for you",
+        "limit": 4
+      }
+    }
+  },
+  "order": [
+    "main",
+    "recommendations"
+  ]
+}

@@ -1,0 +1,78 @@
+<section class="section page-width product-page">
+  <div class="product-gallery">
+    {% for media in product.media %}
+      {% if media.media_type == 'image' %}
+        <div class="gallery-item">
+          {{ media | image_url: width: 1200 | image_tag:
+            loading: 'lazy',
+            widths: '480, 720, 960, 1200',
+            sizes: '(min-width: 900px) 50vw, 100vw',
+            alt: media.alt
+          }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <aside class="product-panel">
+    <p class="eyebrow">{{ product.vendor }}</p>
+    <h1>{{ product.title }}</h1>
+    <p class="price">{{ product.selected_or_first_available_variant.price | money }}</p>
+
+    {% if product.metafields.custom.short_description != blank %}
+      <p>{{ product.metafields.custom.short_description }}</p>
+    {% elsif product.description != blank %}
+      <div class="rte">{{ product.description }}</div>
+    {% endif %}
+
+    {% form 'product', product, id: 'ProductForm', class: 'product-form' %}
+      {% unless product.has_only_default_variant %}
+        <label for="VariantSelect">Variant</label>
+        <select id="VariantSelect" name="id">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}"
+              {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
+              {% unless variant.available %}disabled{% endunless %}>
+              {{ variant.title }}{% unless variant.available %} – Sold out{% endunless %}
+            </option>
+          {% endfor %}
+        </select>
+      {% else %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      {% endunless %}
+
+      <label for="Quantity">Quantity</label>
+      <input id="Quantity" type="number" name="quantity" value="1" min="1">
+
+      <button class="button button-full" type="submit"
+        {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+        {% if product.selected_or_first_available_variant.available %}Add to cart{% else %}Sold out{% endif %}
+      </button>
+    {% endform %}
+
+    <div class="accordion">
+      {% for block in section.blocks %}
+        <details {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.heading }}</summary>
+          <div class="rte">{{ block.settings.content }}</div>
+        </details>
+      {% endfor %}
+    </div>
+  </aside>
+</section>
+
+{% schema %}
+{
+  "name":"Main product",
+  "blocks":[
+    {
+      "type":"accordion",
+      "name":"Accordion row",
+      "settings":[
+        {"type":"text","id":"heading","label":"Heading","default":"Shipping & returns"},
+        {"type":"richtext","id":"content","label":"Content","default":"<p>Add merchant-editable product information here.</p>"}
+      ]
+    }
+  ]
+}
+{% endschema %}

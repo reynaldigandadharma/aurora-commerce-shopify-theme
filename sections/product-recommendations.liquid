@@ -1,0 +1,49 @@
+<product-recommendations
+  class="section page-width"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.limit }}"
+>
+  {% if recommendations.performed and recommendations.products_count > 0 %}
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">YOU MAY ALSO LIKE</p>
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+    </div>
+    <div class="product-grid">
+      {% for product in recommendations.products %}
+        {% render 'product-card', product: product %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</product-recommendations>
+
+{% javascript %}
+class ProductRecommendations extends HTMLElement {
+  constructor() {
+    super();
+    const url = this.dataset.url;
+    fetch(url)
+      .then(response => response.text())
+      .then(text => {
+        const html = document.createElement('div');
+        html.innerHTML = text;
+        const recommendations = html.querySelector('product-recommendations');
+        if (recommendations && recommendations.innerHTML.trim().length) {
+          this.innerHTML = recommendations.innerHTML;
+        }
+      })
+      .catch(() => {});
+  }
+}
+customElements.define('product-recommendations', ProductRecommendations);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name":"Product recommendations",
+  "settings":[
+    {"type":"text","id":"heading","label":"Heading","default":"Recommended for you"},
+    {"type":"range","id":"limit","label":"Products","min":2,"max":8,"step":1,"default":4}
+  ]
+}
+{% endschema %}

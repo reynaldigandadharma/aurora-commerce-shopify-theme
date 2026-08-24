@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-editorial",
+      "settings": {
+        "eyebrow": "NEW SEASON",
+        "heading": "A storefront built for conversion and flexibility.",
+        "text": "<p>Custom Shopify theme architecture with responsive layouts and merchant-editable sections.</p>",
+        "primary_label": "Shop products",
+        "primary_link": "/collections/all",
+        "secondary_label": "Explore collection",
+        "secondary_link": "/collections/all"
+      }
+    },
+    "values": {
+      "type": "value-props",
+      "blocks": {
+        "one": {
+          "type": "item",
+          "settings": {
+            "icon": "\u2726",
+            "heading": "Reusable sections",
+            "text": "Modular content managed in the Theme Editor."
+          }
+        },
+        "two": {
+          "type": "item",
+          "settings": {
+            "icon": "\u25c7",
+            "heading": "Responsive UI",
+            "text": "Designed for desktop and mobile storefronts."
+          }
+        },
+        "three": {
+          "type": "item",
+          "settings": {
+            "icon": "\u25ce",
+            "heading": "Shopify-native",
+            "text": "Liquid, JSON templates, product forms, and recommendations."
+          }
+        }
+      },
+      "block_order": [
+        "one",
+        "two",
+        "three"
+      ],
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "FEATURED",
+        "heading": "Shop the collection",
+        "limit": 4
+      }
+    },
+    "story": {
+      "type": "editorial-story",
+      "settings": {
+        "eyebrow": "OUR APPROACH",
+        "heading": "Considered design, made to live with.",
+        "text": "<p>We choose enduring materials and thoughtful details to create pieces that become more personal with every use.</p>",
+        "stat_one": "100%",
+        "stat_one_label": "Responsibly sourced",
+        "stat_two": "2 yr",
+        "stat_two_label": "Craft warranty",
+        "button_label": "Discover our story",
+        "button_link": "/pages/about"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "values",
+    "featured",
+    "story"
+  ]
+}

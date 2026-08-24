@@ -1,0 +1,32 @@
+<footer class="footer">
+  <div class="page-width footer-grid">
+    <div>
+      <h2>{{ shop.name | default: 'Aurora Commerce' }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+    <div>
+      <strong>Explore</strong>
+      {% for link in section.settings.menu.links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+    </div>
+    <div>
+      <strong>Newsletter</strong>
+      {% form 'customer', class: 'newsletter-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input name="contact[email]" type="email" placeholder="Email address" required>
+        <button type="submit">Subscribe</button>
+      {% endform %}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {"type":"textarea","id":"description","label":"Description","default":"A Shopify portfolio theme focused on reusable storefront components."},
+    {"type":"link_list","id":"menu","label":"Menu","default":"footer"}
+  ]
+}
+{% endschema %}

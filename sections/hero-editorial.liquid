@@ -1,0 +1,55 @@
+<section class="hero">
+  <div class="page-width hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1>{{ section.settings.heading }}</h1>
+      <div class="hero-text">{{ section.settings.text }}</div>
+      <div class="button-row">
+        {% if section.settings.primary_label != blank %}
+          <a class="button" href="{{ section.settings.primary_link }}">{{ section.settings.primary_label }}</a>
+        {% endif %}
+        {% if section.settings.secondary_label != blank %}
+          <a class="button button-outline" href="{{ section.settings.secondary_link }}">{{ section.settings.secondary_label }}</a>
+        {% endif %}
+      </div>
+      <div class="hero-proof" aria-label="Store highlights">
+        <span><strong>4.9/5</strong> customer rating</span>
+        <span><strong>30-day</strong> easy returns</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      {% if section.settings.image %}
+        {{ section.settings.image | image_url: width: 1400 | image_tag:
+          loading: 'eager',
+          widths: '480, 720, 960, 1200, 1400',
+          sizes: '(min-width: 900px) 50vw, 100vw',
+          alt: section.settings.image.alt
+        }}
+      {% else %}
+        {{ 'aurora-hero.png' | asset_url | image_tag:
+          loading: 'eager',
+          widths: '480, 720, 960, 1200, 1600',
+          sizes: '(min-width: 900px) 50vw, 100vw',
+          alt: 'Aurora Commerce new season editorial'
+        }}
+      {% endif %}
+      <span class="hero-media-label">Designed for everyday rituals</span>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Editorial hero",
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"NEW SEASON"},
+    {"type":"text","id":"heading","label":"Heading","default":"A storefront built for conversion and flexibility."},
+    {"type":"richtext","id":"text","label":"Text","default":"<p>Custom Shopify theme architecture with responsive layouts and merchant-editable sections.</p>"},
+    {"type":"text","id":"primary_label","label":"Primary button","default":"Shop products"},
+    {"type":"url","id":"primary_link","label":"Primary link"},
+    {"type":"text","id":"secondary_label","label":"Secondary button","default":"Explore collection"},
+    {"type":"url","id":"secondary_link","label":"Secondary link"},
+    {"type":"image_picker","id":"image","label":"Image"}
+  ],
+  "presets":[{"name":"Editorial hero"}]
+}
+{% endschema %}
